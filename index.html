@@ -220,7 +220,10 @@
     display: flex; align-items: center; justify-content: center;
     border: 1px solid #222;
   }
-  .final-box video { width: 100%; max-height: 640px; }
+  .final-box video {
+    max-width: 360px; width: 100%;
+    border-radius: 12px;
+  }
   .final-fallback {
     text-align: center; color: #fff; padding: 48px 24px;
   }
@@ -487,18 +490,12 @@
 <section id="final">
   <div class="wrap">
     <h2>The final cut</h2>
-    <p class="lede">The 33-second film was finished in Vizard: editing, an animated logo end card, and music. Drop the export into the path below and this page will pick it up.</p>
-    <div class="final-box" id="finalPlayer">
-      <video id="finalVideo" controls playsinline preload="metadata" style="display:none">
+    <p class="lede">The 33-second film, finished in Vizard with editing, an animated logo end card, and music.</p>
+    <div class="final-box">
+      <video controls playsinline preload="metadata">
         <source src="assets/final/alveo_not_today_final.mp4" type="video/mp4" />
       </video>
-      <div class="final-fallback" id="finalFallback">
-        <div class="ring">alveo</div>
-        <h3>Final Vizard cut coming soon</h3>
-        <p>Upload <code>alveo_not_today_final.mp4</code> to <code>assets/final/</code>. Editing, animated logo end card, and music were done in Vizard after the FLUX preview and story upgrade.</p>
-      </div>
     </div>
-    <p class="path-note">assets/final/alveo_not_today_final.mp4</p>
   </div>
 </section>
 
@@ -509,28 +506,5 @@
   </div>
 </footer>
 
-<script>
-  // Show the final video if the file is present; otherwise keep the placeholder.
-  (function () {
-    var v = document.getElementById('finalVideo');
-    var fb = document.getElementById('finalFallback');
-    if (!v) return;
-    var src = v.querySelector('source');
-    var test = new Image(); // not used; use fetch HEAD-ish via video error
-    v.addEventListener('loadeddata', function () {
-      v.style.display = 'block';
-      fb.style.display = 'none';
-    });
-    v.addEventListener('error', function () { /* keep fallback */ }, true);
-    // Probe with fetch so GitHub Pages 404 keeps the fallback visible
-    fetch(src.getAttribute('src'), { method: 'HEAD' }).then(function (r) {
-      if (r.ok) {
-        v.style.display = 'block';
-        fb.style.display = 'none';
-        v.load();
-      }
-    }).catch(function () { /* offline or file:// : leave fallback; user can still drop the file */ });
-  })();
-</script>
 </body>
 </html>
