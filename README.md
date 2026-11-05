@@ -28,7 +28,7 @@ Three directions. I picked **Not Today**: hesitate, then go, with a hard cut on 
 6. **Brand.** Named **alveo**; logo 02 Circle to 2B Breath ring
 7. **Workflow test.** Same shot plan in Vizard and direct BFL
 8. **Story upgrade.** Turning point + about 20 shots; hand-on-chest as the thread
-9. **Final cut in Vizard.** 33s with animated logo end card and music *(drop file below)*
+9. **Final cut in Vizard.** 33s with animated logo end card and music
 
 ## Thumbnail grid
 
@@ -38,13 +38,7 @@ Three directions. I picked **Not Today**: hesitate, then go, with a hard cut on 
 
 ## Final video
 
-Drop your Vizard export here:
-
-```
-assets/final/alveo_not_today_final.mp4
-```
-
-The case study page already points at that path. Until then it shows a "Final Vizard cut coming soon" placeholder.
+The 33-second final cut is at `assets/final/alveo_not_today_final.mp4` and shown on the case study page.
 
 ## Folder map
 
