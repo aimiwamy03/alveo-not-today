@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Alveo: Not Today  -  Amy Wang</title>
+<meta name="description" content="Process case study for Alveo Not Today, a 30-second social film for an outdoor jacket made for people with asthma." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #f6f4f0;
+    --paper: #fffcf8;
+    --ink: #1a1a1a;
+    --muted: #5c5c5c;
+    --line: #e4e0d8;
+    --orange: #CE5426;
+    --cobalt: #055FAE;
+    --glacier: #97C5E6;
+    --snow: #E2E2E7;
+    --max: 1080px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: Inter, system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.55;
+    font-size: 17px;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--orange); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  img, video { max-width: 100%; display: block; height: auto; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+  header.site {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--line);
+    background: var(--paper);
+  }
+  header.site .wrap {
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 13px; letter-spacing: 0.04em; text-transform: uppercase;
+    font-weight: 600;
+  }
+  header.site .mark { color: var(--orange); }
+  .hero {
+    padding: 72px 0 56px;
+    background:
+      linear-gradient(180deg, var(--paper) 0%, var(--bg) 100%);
+  }
+  .eyebrow {
+    font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--orange); font-weight: 600; margin: 0 0 16px;
+  }
+  h1 {
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    line-height: 1.05; letter-spacing: -0.03em;
+    margin: 0 0 18px; font-weight: 700;
+  }
+  h1 .dot { color: var(--orange); }
+  .pitch {
+    font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+    color: var(--muted); max-width: 34em; margin: 0 0 28px;
+  }
+  .meta {
+    display: flex; flex-wrap: wrap; gap: 10px 24px;
+    font-size: 14px; color: var(--muted);
+  }
+  .meta strong { color: var(--ink); font-weight: 600; }
+  section { padding: 64px 0; }
+  section + section { border-top: 1px solid var(--line); }
+  h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    letter-spacing: -0.02em; margin: 0 0 18px; font-weight: 700;
+  }
+  h3 {
+    font-size: 1.05rem; margin: 28px 0 10px; font-weight: 600;
+  }
+  p { margin: 0 0 14px; max-width: 42em; }
+  .lede { font-size: 1.15rem; color: var(--ink); max-width: 38em; }
+  .quote {
+    margin: 28px 0;
+    padding: 24px 28px;
+    background: var(--paper);
+    border-left: 4px solid var(--orange);
+    font-size: 1.25rem; font-weight: 500; letter-spacing: -0.01em;
+    max-width: 36em;
+  }
+  .quote cite {
+    display: block; margin-top: 12px;
+    font-size: 13px; font-style: normal; color: var(--muted);
+    font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase;
+  }
+  .grid-2 {
+    display: grid; gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grid-3 {
+    display: grid; gap: 16px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .grid-5 {
+    display: grid; gap: 10px;
+    grid-template-columns: repeat(5, 1fr);
+  }
+  .grid-shots {
+    display: grid; gap: 10px;
+    grid-template-columns: repeat(5, 1fr);
+  }
+  @media (max-width: 820px) {
+    .grid-2, .grid-3, .grid-5, .grid-shots { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 520px) {
+    .grid-2, .grid-3, .grid-5, .grid-shots { grid-template-columns: 1fr; }
+    .hero { padding: 48px 0 36px; }
+    section { padding: 48px 0; }
+  }
+  .card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .card img { width: 100%; }
+  .card .body { padding: 16px 18px 18px; }
+  .card .label {
+    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--orange); font-weight: 600; margin: 0 0 6px;
+  }
+  .card h3 { margin: 0 0 6px; font-size: 1rem; }
+  .card p { margin: 0; font-size: 14px; color: var(--muted); }
+  .card.pick { border-color: var(--orange); box-shadow: 0 0 0 1px var(--orange); }
+  .frame {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .frame img { width: 100%; }
+  .caption {
+    font-size: 13px; color: var(--muted); margin-top: 10px;
+  }
+  .shot {
+    background: #111; border-radius: 8px; overflow: hidden;
+    position: relative;
+  }
+  .shot img { width: 100%; aspect-ratio: 1; object-fit: cover; }
+  .shot span {
+    position: absolute; left: 8px; bottom: 8px;
+    background: rgba(0,0,0,0.65); color: #fff;
+    font-size: 11px; font-weight: 600; padding: 3px 7px; border-radius: 4px;
+    letter-spacing: 0.04em;
+  }
+  .palette {
+    display: flex; flex-wrap: wrap; gap: 10px; margin: 18px 0 8px;
+  }
+  .swatch {
+    width: 72px; text-align: center; font-size: 11px; color: var(--muted);
+  }
+  .swatch i {
+    display: block; height: 48px; border-radius: 8px;
+    border: 1px solid var(--line); margin-bottom: 6px;
+  }
+  .compare {
+    display: grid; gap: 20px;
+    grid-template-columns: 1fr 1fr;
+  }
+  @media (max-width: 700px) { .compare { grid-template-columns: 1fr; } }
+  .compare .phone {
+    background: #0f0f0f; border-radius: 20px; padding: 14px;
+    border: 1px solid #222;
+  }
+  .compare video {
+    width: 100%; border-radius: 12px; background: #000;
+    aspect-ratio: 9/16; object-fit: cover;
+  }
+  .compare .tag {
+    color: #fff; font-size: 12px; letter-spacing: 0.08em;
+    text-transform: uppercase; font-weight: 600;
+    margin: 0 0 10px; display: flex; justify-content: space-between;
+  }
+  .compare .tag em { font-style: normal; color: var(--orange); }
+  .fix {
+    display: flex; gap: 18px; padding: 20px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .fix:last-child { border-bottom: 0; }
+  .step-num {
+    flex: 0 0 48px; height: 48px; border-radius: 50%;
+    background: var(--paper); border: 1px solid var(--line);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; color: var(--orange); font-size: 14px;
+  }
+  .step-body { flex: 1; min-width: 0; }
+  .step-body h3 { margin: 4px 0 8px; }
+  .tools {
+    display: grid; gap: 12px;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+  .tool {
+    background: var(--paper); border: 1px solid var(--line);
+    border-radius: 10px; padding: 16px 18px;
+  }
+  .tool strong { display: block; margin-bottom: 4px; }
+  .tool span { font-size: 14px; color: var(--muted); }
+  .learnings { list-style: none; padding: 0; margin: 0; }
+  .learnings li {
+    background: var(--paper); border: 1px solid var(--line);
+    border-radius: 10px; padding: 16px 18px; margin-bottom: 10px;
+  }
+  .learnings li strong { color: var(--orange); }
+  .final-box {
+    position: relative;
+    background: #111; border-radius: 16px; overflow: hidden;
+    min-height: 360px;
+    display: flex; align-items: center; justify-content: center;
+    border: 1px solid #222;
+  }
+  .final-box video { width: 100%; max-height: 640px; }
+  .final-fallback {
+    text-align: center; color: #fff; padding: 48px 24px;
+  }
+  .final-fallback .ring {
+    width: 88px; height: 88px; margin: 0 auto 20px;
+    border: 2px solid var(--orange); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--orange); font-weight: 600;
+  }
+  .final-fallback h3 { margin: 0 0 8px; font-size: 1.4rem; }
+  .final-fallback p { margin: 0 auto; color: #aaa; max-width: 28em; }
+  .path-note {
+    margin-top: 14px; font-size: 13px; color: var(--muted);
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+  footer {
+    padding: 40px 0 56px; border-top: 1px solid var(--line);
+    font-size: 13px; color: var(--muted);
+  }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div><span class="mark">alveo</span> &nbsp;/&nbsp; process case study</div>
+    <div>Amy Wang &middot; Oct 9, 2026</div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Portfolio case study</p>
+    <h1><span class="dot">.</span>alveo<br/>Not Today</h1>
+    <p class="pitch">A 30-second social film for an outdoor jacket made for people with asthma. Asthma taught her to say &ldquo;not today.&rdquo; This jacket is what makes saying yes feel safe.</p>
+    <div class="meta">
+      <div><strong>Role</strong> Amy Wang, creative direction and AI workflow</div>
+      <div><strong>Built</strong> one afternoon, Oct 9, 2026 (PDT)</div>
+      <div><strong>Board</strong> <a href="https://www.figma.com/board/CyC9LQc7xVnF5cSwfhKxLZ/Untitled" target="_blank" rel="noopener">FigJam</a></div>
+    </div>
+  </div>
+</section>
+
+<section id="insight">
+  <div class="wrap">
+    <h2>The problem and the insight</h2>
+    <p class="lede">I wanted a social short for an outdoor jacket aimed at people with asthma. The product should help someone trust their body&rsquo;s capacity to move, and feel better able to say yes to cold air, steep paths, and play.</p>
+    <blockquote class="quote">
+      For people with asthma, the fear of being out of breath is often what holds them back, more than the breath itself.
+      <cite>The click we designed for</cite>
+    </blockquote>
+    <p>Three directions came out of that:</p>
+    <div class="grid-3" style="margin-top:24px">
+      <div class="card">
+        <div class="body">
+          <p class="label">Direction 01</p>
+          <h3>The Count</h3>
+          <p>Quiet and personal. She counts steps the way people with asthma do, until the counting just stops at the top.</p>
+        </div>
+      </div>
+      <div class="card pick">
+        <div class="body">
+          <p class="label">Direction 02 &middot; chosen</p>
+          <h3>Not Today</h3>
+          <p>Rhythmic and a bit defiant. She holds back three times, then the same shots replay and she goes. Hard cut on the beat.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="body">
+          <p class="label">Direction 03</p>
+          <h3>Lungs of the Mountain</h3>
+          <p>Visual and poetic. Breath in step with the landscape. Soft, but less built for social sharing.</p>
+        </div>
+      </div>
+    </div>
+    <p style="margin-top:20px">I picked <strong>Not Today</strong>. It has a built-in structure, a beat-synced turn that works with the sound off, and it shows the jacket moving.</p>
+  </div>
+</section>
+
+<section id="process">
+  <div class="wrap">
+    <h2>The process</h2>
+    <p class="lede">One afternoon with a FigJam board, FLUX, and a clear brief. Here is how each step landed.</p>
+
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-body">
+        <h3>Moodboard</h3>
+        <p>Brief: outdoors wear, Moncler / On / Salomon energy, bright colors plus a minimalist alpine feel. I started from a Pinterest pin and gathered 18 more refs. The board got five sections and a 7-color palette sampled from the actual photos.</p>
+        <div class="palette">
+          <div class="swatch"><i style="background:#C56283"></i>Pin pink</div>
+          <div class="swatch"><i style="background:#EEB936"></i>Grenoble yellow</div>
+          <div class="swatch"><i style="background:#B52D1B"></i>Signal red</div>
+          <div class="swatch"><i style="background:#CE5426"></i>Alpine orange</div>
+          <div class="swatch"><i style="background:#055FAE"></i>Cobalt sky</div>
+          <div class="swatch"><i style="background:#97C5E6"></i>Glacier blue</div>
+          <div class="swatch"><i style="background:#E2E2E7"></i>Snow</div>
+        </div>
+        <div class="grid-2" style="margin-top:16px">
+          <figure class="frame">
+            <img src="assets/moodboard/board.jpg" alt="FigJam moodboard for the outdoor wear shoot" />
+          </figure>
+          <figure class="frame">
+            <img src="assets/moodboard/sheet_final.jpg" alt="Contact sheet of final moodboard picks" />
+          </figure>
+        </div>
+        <p class="caption"><a href="https://www.figma.com/board/CyC9LQc7xVnF5cSwfhKxLZ/Untitled" target="_blank" rel="noopener">Open the FigJam board</a></p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-body">
+        <h3>FLUX storyboard</h3>
+        <p>22 FLUX sketches across all three directions, each card labeled with timing, framing, action, sound, and what it captures from the product or the person. The click shot has a red frame. Not Today leads with 10 shots in two acts.</p>
+        <div class="frame" style="margin:14px 0">
+          <img src="assets/storyboard/prevA.jpg" alt="Not Today storyboard strip" />
+        </div>
+        <div class="grid-shots">
+          <div class="shot"><img src="assets/storyboard/A01.jpg" alt="A01" /><span>A01</span></div>
+          <div class="shot"><img src="assets/storyboard/A02.jpg" alt="A02" /><span>A02</span></div>
+          <div class="shot"><img src="assets/storyboard/A03.jpg" alt="A03" /><span>A03</span></div>
+          <div class="shot"><img src="assets/storyboard/A04.jpg" alt="A04" /><span>A04</span></div>
+          <div class="shot"><img src="assets/storyboard/A05.jpg" alt="A05" /><span>A05</span></div>
+          <div class="shot"><img src="assets/storyboard/A06.jpg" alt="A06" /><span>A06</span></div>
+          <div class="shot"><img src="assets/storyboard/A07.jpg" alt="A07" /><span>A07</span></div>
+          <div class="shot"><img src="assets/storyboard/A08.jpg" alt="A08" /><span>A08</span></div>
+          <div class="shot"><img src="assets/storyboard/A09.jpg" alt="A09" /><span>A09</span></div>
+          <div class="shot"><img src="assets/storyboard/A10.jpg" alt="A10" /><span>A10</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-body">
+        <h3>Vizard asset pack</h3>
+        <p>Before editing in Vizard I needed exact references: the girl from every angle, the jacket open and closed, details, props, and empty location plates. 33 FLUX stills and 6 labeled sheets.</p>
+        <div class="grid-2" style="margin-top:14px">
+          <figure class="frame"><img src="assets/vizard/sheet_character_turnaround.jpg" alt="Character turnaround sheet" /></figure>
+          <figure class="frame"><img src="assets/vizard/sheet_jacket_product.jpg" alt="Jacket product sheet" /></figure>
+          <figure class="frame"><img src="assets/vizard/sheet_jacket_details.jpg" alt="Jacket details sheet" /></figure>
+          <figure class="frame"><img src="assets/vizard/sheet_locations.jpg" alt="Locations sheet" /></figure>
+        </div>
+        <div class="grid-3" style="margin-top:14px">
+          <figure class="frame"><img src="assets/vizard/character_34_front.jpg" alt="Character 3/4 front" /></figure>
+          <figure class="frame"><img src="assets/vizard/pose_hesitate.jpg" alt="Hesitate pose" /></figure>
+          <figure class="frame"><img src="assets/vizard/pose_running.jpg" alt="Running pose" /></figure>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">04</div>
+      <div class="step-body">
+        <h3>10-second FLUX preview: v1 to v2</h3>
+        <p>I generated a vertical 10-second cut with successive ~2s shots so I could check direction before the full film. Keyframes were pinned. Transitions were designed: match cut on the hand, snowball wipe, tilt, then a hard cut on the beat.</p>
+        <h3>v1 self-critique</h3>
+        <p>She never actually flung the door open. She wasn&rsquo;t clearly zipping her collar. The &ldquo;tilt&rdquo; was a slide effect. The inhaler could read as a spray can.</p>
+        <h3>v2 fixes</h3>
+        <p>On the beat drop she shoves the door open into bright snow light. Hard cut to her gloved hand pulling the zip up to her chin. The inhaler is a blue plastic one.</p>
+        <div class="compare" style="margin-top:18px">
+          <div class="phone">
+            <div class="tag">Preview <em>v1</em></div>
+            <video controls playsinline preload="metadata" poster="assets/preview/contact_v1.jpg">
+              <source src="assets/preview/preview_v1.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <div class="phone">
+            <div class="tag">Preview <em>v2</em></div>
+            <video controls playsinline preload="metadata" poster="assets/preview/contact_v2.jpg">
+              <source src="assets/preview/preview_v2.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </div>
+        <div class="grid-2" style="margin-top:16px">
+          <figure class="frame">
+            <img src="assets/preview/contact_v1.jpg" alt="Contact sheet of preview v1" />
+            <figcaption class="caption" style="padding:10px 14px">v1 contact sheet</figcaption>
+          </figure>
+          <figure class="frame">
+            <img src="assets/preview/contact_v2.jpg" alt="Contact sheet of preview v2" />
+            <figcaption class="caption" style="padding:10px 14px">v2 contact sheet</figcaption>
+          </figure>
+        </div>
+        <div class="grid-shots" style="margin-top:14px">
+          <div class="shot"><img src="assets/keyframes/k00_door_hand.jpg" alt="Door hand" /><span>Door</span></div>
+          <div class="shot"><img src="assets/keyframes/k02_chest_pocket.jpg" alt="Chest pocket" /><span>Pocket</span></div>
+          <div class="shot"><img src="assets/keyframes/k08_door_burst.jpg" alt="Door burst" /><span>Burst</span></div>
+          <div class="shot"><img src="assets/keyframes/k92_zip_chin.jpg" alt="Zip to chin" /><span>Zip</span></div>
+          <div class="shot"><img src="assets/vizard/detail_chest_pocket.jpg" alt="Inhaler detail" /><span>Inhaler</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">05</div>
+      <div class="step-body">
+        <h3>Brand: alveo</h3>
+        <p>From a list of ten names I chose <strong>alveo</strong>, from alveoli, the tiny air sacs in the lungs. It sounds Italian and premium to most people, and people with asthma catch the meaning.</p>
+        <p>Four logo directions. I picked <strong>02 Circle</strong>, then refined it into 2A Refined, <strong>2B Breath ring</strong> (the circle tapers like an exhale), and 2C Badge for small use.</p>
+        <div class="grid-2" style="margin-top:14px">
+          <figure class="frame"><img src="assets/brand/logo_directions.jpg" alt="Four alveo logo directions" /></figure>
+          <figure class="frame"><img src="assets/brand/logo_2_iterations.jpg" alt="Circle logo iterations 2A 2B 2C" /></figure>
+        </div>
+        <div class="grid-3" style="margin-top:14px">
+          <figure class="frame"><img src="assets/brand/logo_2B_breath_ring.jpg" alt="2B Breath ring logo" /></figure>
+          <figure class="frame"><img src="assets/brand/mockup_back_yoke.jpg" alt="Breath ring on jacket back yoke" /></figure>
+          <figure class="frame"><img src="assets/brand/mockup_girl_chest.jpg" alt="Girl wearing jacket with chest logo" /></figure>
+        </div>
+        <p class="caption">Favorite lockup: 2B Breath ring on the back yoke. The ring quietly carries the asthma story.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">06</div>
+      <div class="step-body">
+        <h3>Workflow test: Vizard vs direct BFL</h3>
+        <p>I ran the same shot plan through Vizard and through direct Black Forest Labs video so the comparison was fair. Same assets, same 9:16 format, same timing. Score on consistency, transitions, whether the click hits, and time and cost.</p>
+        <p>The Vizard prompt calls for motivated transitions (match cuts, the snowball wipe, the tilt), not generic crossfades. Full prompt in <a href="process/prompts.md">process/prompts.md</a>.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">07</div>
+      <div class="step-body">
+        <h3>Story upgrade</h3>
+        <p>The first cut was &ldquo;she hesitates, then she goes,&rdquo; but we never saw why she changes. Three fixes:</p>
+        <ol>
+          <li><strong>A turning point.</strong> Her hand finds the inhaler, she breathes, she zips the collar up like putting on armor. Then the beat drops.</li>
+          <li><strong>About 20 shots</strong> at a faster social pace, with room for product close-ups.</li>
+          <li><strong>Brand close-ups that do story work</strong> (cuff, pocket, zip-pull badge, collar, hood, fabric, vents, back logo).</li>
+        </ol>
+        <p>The visual thread is her <strong>hand on her chest</strong>, three times: as fear, as resolve on the zip, then as calm.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="tools">
+  <div class="wrap">
+    <h2>Tools</h2>
+    <div class="tools">
+      <div class="tool"><strong>Figma / FigJam</strong><span>Board via the Figma MCP: moodboard, storyboard, asset sheets</span></div>
+      <div class="tool"><strong>Black Forest Labs FLUX</strong><span>Stills (FLUX.2) and the 10s video preview (FLUX 3)</span></div>
+      <div class="tool"><strong>Vizard</strong><span>Final 33s edit, animated logo end card, music</span></div>
+      <div class="tool"><strong>Grok bots</strong><span>Creative partner for briefs, prompts, critique, and iteration</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="learned">
+  <div class="wrap">
+    <h2>What I learned</h2>
+    <ul class="learnings">
+      <li><strong>Motivated transitions.</strong> Match cuts, the snowball wipe, and the tilt beat generic crossfades every time. I wrote that into the Vizard prompt on purpose.</li>
+      <li><strong>Safety filters vs spelling.</strong> BFL&rsquo;s filter blocked some logo and mark edits. Compositing the real vector mark with PIL kept &ldquo;.alveo&rdquo; exact on the jacket mockups.</li>
+      <li><strong>Fair workflow tests.</strong> Comparing Vizard and direct BFL only works if the shot plan, assets, and format stay identical. Then score consistency, transitions, the click, and cost.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="final">
+  <div class="wrap">
+    <h2>The final cut</h2>
+    <p class="lede">The 33-second film was finished in Vizard: editing, an animated logo end card, and music. Drop the export into the path below and this page will pick it up.</p>
+    <div class="final-box" id="finalPlayer">
+      <video id="finalVideo" controls playsinline preload="metadata" style="display:none">
+        <source src="assets/final/alveo_not_today_final.mp4" type="video/mp4" />
+      </video>
+      <div class="final-fallback" id="finalFallback">
+        <div class="ring">alveo</div>
+        <h3>Final Vizard cut coming soon</h3>
+        <p>Upload <code>alveo_not_today_final.mp4</code> to <code>assets/final/</code>. Editing, animated logo end card, and music were done in Vizard after the FLUX preview and story upgrade.</p>
+      </div>
+    </div>
+    <p class="path-note">assets/final/alveo_not_today_final.mp4</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>Alveo: Not Today &middot; process archive &middot; Amy Wang</div>
+    <div><a href="process/timeline.md">Timeline</a> &middot; <a href="process/prompts.md">Prompts</a> &middot; <a href="README.md">README</a></div>
+  </div>
+</footer>
+
+<script>
+  // Show the final video if the file is present; otherwise keep the placeholder.
+  (function () {
+    var v = document.getElementById('finalVideo');
+    var fb = document.getElementById('finalFallback');
+    if (!v) return;
+    var src = v.querySelector('source');
+    var test = new Image(); // not used; use fetch HEAD-ish via video error
+    v.addEventListener('loadeddata', function () {
+      v.style.display = 'block';
+      fb.style.display = 'none';
+    });
+    v.addEventListener('error', function () { /* keep fallback */ }, true);
+    // Probe with fetch so GitHub Pages 404 keeps the fallback visible
+    fetch(src.getAttribute('src'), { method: 'HEAD' }).then(function (r) {
+      if (r.ok) {
+        v.style.display = 'block';
+        fb.style.display = 'none';
+        v.load();
+      }
+    }).catch(function () { /* offline or file:// : leave fallback; user can still drop the file */ });
+  })();
+</script>
+</body>
+</html>
